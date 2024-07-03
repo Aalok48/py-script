@@ -2,14 +2,17 @@ import js
 from pyscript import document
 
 def score_update(event):
-    player1_score = js.document.getElementById('player1_score')
-    player2_score = js.document.getElementById('player2_score')
+    # Get the selected radio button for player 1
+    player1_selected = js.document.querySelector('#player1_score input[name="run"]:checked')
+    player1_score = int(player1_selected.value)  # Convert to integer
 
-    output_div1 = document.querySelector('#player1_score_result')
-    output_div1.textContent = player1_score
+    # Get the selected radio button for player 2
+    player2_selected = js.document.querySelector('#player2_score input[name="run"]:checked')
+    player2_score = int(player2_selected.value)  # Convert to integer
 
-    output_div2 = document.querySelector('#player2_score_result')
-    output_div2.textContent = player2_score
+    # Update the score display
+    output_div1 = document.querySelector('#player_result')
+    output_div1.textContent = f"Alok karn: {player1_score}"
 
-
-# document.querySelector('#count').addEventListener('click', score_update)
+    output_div2 = document.querySelector('#player_result')
+    output_div2.textContent = f"Subhash Mandal: {player2_score}"
